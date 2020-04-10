@@ -1,0 +1,26 @@
+.sign-in {
+    width: 30%;
+}
+.sign-in-sign-up {
+    height: 100%;
+    min-height: 500px;
+    display: block;
+}
+
+.sign-in-container {
+    height: 100%;
+}
+
+.sign-in-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-in-image {
+    width: 50%;
+    height: 80vh;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
