@@ -1,0 +1,8 @@
+.text-with-link a {
+    margin-left: 5px;
+    color: #1877f2;
+
+    &:hover{
+        color: #0059ce;
+    }
+}

@@ -3,6 +3,7 @@ import FormInput from '../../components/form-input/form-input.components';
 import SignInImage from '../../assets/sing-in.jpg';
 import CustomButton from '../../components/custom-button/custom-button.compenent';
 import { signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.utils';
+import { Link } from 'react-router-dom';
 import './sign-in.styles.scss';
 
 class SignIn extends Component {
@@ -27,26 +28,30 @@ class SignIn extends Component {
     }
 
     render() {
+        const {email, password} = this.state;
+
         return(
             <div className="sign-in-container">
                 <div className="sign-in">
                     <h2>I already have account</h2>
-                    <span>Sign in with your email and password</span>
-
+                    <span className="text-with-link">
+                        Sign in with your email and password. 
+                        <Link to="/signup">Don't Have an Account?</Link>
+                    </span>
                     <form onSubmit={this.handleSubmit}>
                         <FormInput 
                             label="Email"
                             handleChange={this.handleChange} 
                             name="email" 
                             type="email" 
-                            value={this.state.email} 
+                            value={email} 
                             required 
                         />
                         <FormInput 
                             onChange={this.handleChange} 
                             name="password" 
                             type="password" 
-                            value={this.state.password} 
+                            value={password} 
                             required
                             label="Password"
                         />
@@ -60,7 +65,6 @@ class SignIn extends Component {
                         <CustomButton isFacebookSignIn onClick={signInWithFacebook}>
                             SIGN IN WITH FACEBOOK
                         </CustomButton>
-                        
                     </form>
                 </div>
                 <div className="sign-in-image" style={{backgroundImage: `url(${SignInImage})`}}></div>
