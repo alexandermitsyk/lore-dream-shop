@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import FormInput from '../../components/form-input/form-input.components';
 import SignInImage from '../../assets/sing-in.jpg';
 import CustomButton from '../../components/custom-button/custom-button.compenent';
+import { signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.utils';
 import './sign-in.styles.scss';
 
 class SignIn extends Component {
@@ -16,7 +17,6 @@ class SignIn extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-
         this.setState({email: '', password: ''});
     }
 
@@ -50,7 +50,17 @@ class SignIn extends Component {
                             required
                             label="Password"
                         />
-                        <CustomButton type="submit" value="Submit form">Sign In</CustomButton>
+                        <CustomButton type="submit">
+                            SIGN IN
+                        </CustomButton>
+                        <div className="sign-in-separator"><span>OR</span></div>
+                        <CustomButton isGoogleSignIn onClick={signInWithGoogle}>
+                            SIGN IN WITH GOOGLE
+                        </CustomButton>
+                        <CustomButton isFacebookSignIn onClick={signInWithFacebook}>
+                            SIGN IN WITH FACEBOOK
+                        </CustomButton>
+                        
                     </form>
                 </div>
                 <div className="sign-in-image" style={{backgroundImage: `url(${SignInImage})`}}></div>

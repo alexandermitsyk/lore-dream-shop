@@ -13,6 +13,29 @@
     font-weight: bolder;
     border: none;
     cursor: pointer;
+    border: 1px solid black;
+    width: 100%;
+    margin-bottom: 10px;
+
+    &.facebook-sign-in {
+      border: 1px solid #1877f2;
+      background-color: #1877f2;
+
+      &:hover {
+        color: #1877f2;
+        border: 1px solid #1877f2;
+      }
+    }
+
+    &.google-sign-in {
+      border: 1px solid #4285f4;
+      background-color: #4285f4;
+
+      &:hover{
+        color: #4285f4;
+        border: 1px solid #4285f4;
+      }
+    }
   
     &:hover {
       background-color: white;
