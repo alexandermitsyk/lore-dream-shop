@@ -4,6 +4,7 @@ import SignInImage from '../../assets/sing-in.jpg';
 import CustomButton from '../../components/custom-button/custom-button.compenent';
 import { signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.utils';
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase/firebase.utils';
 import './sign-in.styles.scss';
 
 class SignIn extends Component {
@@ -16,9 +17,17 @@ class SignIn extends Component {
         }
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
-        this.setState({email: '', password: ''});
+
+        const { email, password } = this.state; 
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({email: '', password: ''});
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     handleChange = event => {
