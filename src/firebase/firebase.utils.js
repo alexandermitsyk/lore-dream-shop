@@ -4,7 +4,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-    apiKey: "AIzaSyBUK-eFT7tCnS1aTixXemyuP596-l-mf6c",
+    apiKey: "",
     authDomain: "lore-db.firebaseapp.com",
     databaseURL: "https://lore-db.firebaseio.com",
     projectId: "lore-db",
