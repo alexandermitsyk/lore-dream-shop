@@ -11,6 +11,7 @@ a {
 .app-container{
     width: 1190px;
     margin: 0 auto;
+    position: relative;
 }
 
 * {
