@@ -1,5 +1,6 @@
 .sign-in {
     width: 35%;
+    position: relative;
 }
 .sign-in-sign-up {
     height: 100%;
@@ -23,6 +24,12 @@
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.error-panel {
+    color: #ec4217;
+    border-radius: 4px;
+    position: absolute;
 }
 
 .sign-in-separator {

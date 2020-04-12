@@ -1,18 +1,17 @@
 import React from 'react'
 import './custom-button.style.scss';
 
-const CustomButton = ({ children, isGoogleSignIn, isFacebookSignIn, ...otherProps }) => {
-
-    let className = '';
+const CustomButton = ({ children, isGoogleSignIn, inverted, isFacebookSignIn, ...otherProps }) => {
+    let social_class = '';
 
     if(isGoogleSignIn){
-        className = 'google-sign-in';
+        social_class = 'google-sign-in';
     } else if(isFacebookSignIn){
-        className = 'facebook-sign-in';
+        social_class = 'facebook-sign-in';
     }
 
     return (
-        <button className={`${className} custom-button`} {...otherProps}>
+        <button className={`${social_class} ${inverted ? 'inverted' : ''} custom-button`} {...otherProps}>
             {children}
         </button>
     )

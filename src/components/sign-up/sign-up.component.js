@@ -15,7 +15,8 @@ class SignUp extends Component {
             displayName: '',
             email: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            error: '',
         }
     }
 
@@ -36,11 +37,15 @@ class SignUp extends Component {
                 displayName: '',
                 email: '',
                 password: '',
-                confirmPassword: ''
+                confirmPassword: '',
+                error: '',
             });
     
         } catch (error) {
-            console.error(error);
+            this.setState({
+                error: error.message
+             });
+            console.error(error.message);
         }
     }
 
@@ -64,6 +69,9 @@ class SignUp extends Component {
                         Sign up with your email and password.
                         <Link to="/signin">You have already account? Sign in</Link>
                     </span>
+                    {
+                        this.state.error ? <div className="error-panel">{this.state.error}</div> : ''
+                    }
                     <form onSubmit={this.handleSubmit}>
                     <FormInput 
                         label="Display name"

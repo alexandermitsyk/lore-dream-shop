@@ -14,19 +14,19 @@ class SignIn extends Component {
         this.state = {
             email:'',
             password: '',
+            error: '',
         }
     }
 
     handleSubmit = async event => {
         event.preventDefault();
-
         const { email, password } = this.state; 
-
         try {
             await auth.signInWithEmailAndPassword(email, password);
-            this.setState({email: '', password: ''});
+            this.setState({email: '', password: '', error:''});
         } catch (error) {
-            console.log(error);
+            this.setState({error: 'Incorrect username or password.'})
+            console.log("User not found ",error);
         }
     }
 
@@ -47,6 +47,9 @@ class SignIn extends Component {
                         Sign in with your email and password. 
                         <Link to="/signup">Don't Have an Account?</Link>
                     </span>
+                    {
+                        this.state.error ? <div className="error-panel">{this.state.error}</div>: ''
+                    }
                     <form onSubmit={this.handleSubmit}>
                         <FormInput 
                             label="Email"
