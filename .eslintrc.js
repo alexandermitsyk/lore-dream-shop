@@ -15,6 +15,7 @@ module.exports = {
         "react-hooks",
     ],
     rules: {
+        "react/jsx-props-no-spreading": "off",
         // This rule helps me to organise code based on functionality instead of ABC...
         "react/sort-comp": 0,
 
