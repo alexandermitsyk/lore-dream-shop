@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import FormInput from '../form-input/form-input.components';
 import SignUpImage from '../../assets/sing-up.jpg';
 import CustomButton from '../custom-button/custom-button.compenent';
-import { Link } from 'react-router-dom';
-import {auth, createUserProfileDocument} from '../../firebase/firebase.utils';
-
+import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import './sign-up.styles.scss';
 
 class SignUp extends Component {
-    constructor(){
+    constructor() {
         super();
 
         this.state = {
@@ -17,14 +16,16 @@ class SignUp extends Component {
             password: '',
             confirmPassword: '',
             error: '',
-        }
+        };
     }
 
-    handleSubmit = async event => {
+    handleSubmit = async (event) => {
         event.preventDefault();
-        const {displayName, email, password, confirmPassword} = this.state;
+        const {
+            displayName, email, password, confirmPassword,
+        } = this.state;
 
-        if(password !== confirmPassword) {
+        if (password !== confirmPassword) {
             alert("Password don't match");
             return;
         }
@@ -40,29 +41,31 @@ class SignUp extends Component {
                 confirmPassword: '',
                 error: '',
             });
-    
+
         } catch (error) {
             this.setState({
-                error: error.message
-             });
+                error: error.message,
+            });
             console.error(error.message);
         }
     }
 
-    handleChange = event => {
+    handleChange = (event) => {
         const { value, name } = event.target;
 
-        this.setState({[name]: value});
+        this.setState({ [name]: value });
 
-        console.log(this.state)
-   }
+        console.log(this.state);
+    }
 
     render() {
-        const {displayName, email, password, confirmPassword} = this.state;
+        const {
+            displayName, email, password, confirmPassword,
+        } = this.state;
 
-        return(
+        return (
             <div className="sign-in-container">
-                <div className="sign-in-image" style={{backgroundImage: `url(${SignUpImage})`}}></div>
+                <div className="sign-in-image" style={{ backgroundImage: `url(${SignUpImage})` }} />
                 <div className="sign-in">
                     <h2>I do not have a account</h2>
                     <span className="text-with-link">
@@ -73,45 +76,45 @@ class SignUp extends Component {
                         this.state.error ? <div className="error-panel">{this.state.error}</div> : ''
                     }
                     <form onSubmit={this.handleSubmit}>
-                    <FormInput 
-                        label="Display name"
-                        handleChange={this.handleChange} 
-                        name="displayName" 
-                        type="text" 
-                        value={displayName} 
-                        required 
-                    />
-                    <FormInput 
-                        label="Email"
-                        handleChange={this.handleChange} 
-                        name="email" 
-                        type="email" 
-                        value={email} 
-                        required 
-                    />
-                    <FormInput 
-                        onChange={this.handleChange} 
-                        name="password" 
-                        type="password" 
-                        value={password} 
-                        required
-                        label="Password"
-                    />
-                    <FormInput 
-                        onChange={this.handleChange} 
-                        name="confirmPassword" 
-                        type="password" 
-                        value={confirmPassword} 
-                        required
-                        label="Confirm password"
-                    />
-                    <CustomButton type="submit">
+                        <FormInput
+                            label="Display name"
+                            handleChange={this.handleChange}
+                            name="displayName"
+                            type="text"
+                            value={displayName}
+                            required
+                        />
+                        <FormInput
+                            label="Email"
+                            handleChange={this.handleChange}
+                            name="email"
+                            type="email"
+                            value={email}
+                            required
+                        />
+                        <FormInput
+                            onChange={this.handleChange}
+                            name="password"
+                            type="password"
+                            value={password}
+                            required
+                            label="Password"
+                        />
+                        <FormInput
+                            onChange={this.handleChange}
+                            name="confirmPassword"
+                            type="password"
+                            value={confirmPassword}
+                            required
+                            label="Confirm password"
+                        />
+                        <CustomButton type="submit">
                             SIGN UP
-                    </CustomButton>
+                        </CustomButton>
                     </form>
                 </div>
             </div>
-        )
+        );
     }
 }
 
